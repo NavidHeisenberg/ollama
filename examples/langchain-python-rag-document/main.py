@@ -10,8 +10,8 @@ from langchain.chains import RetrievalQA
 from langchain_community.embeddings import OllamaEmbeddings
 import sys
 import os
-import pdfminer
-import pdfminer.high_level
+# import pdfminer
+# import pdfminer.high_level
 
 class SuppressStdout:
     def __enter__(self):
@@ -32,7 +32,7 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=0)
 all_splits = text_splitter.split_documents(data)
 
-# Navid changed this line:
+# Switched GPT4AllEmbedding with OllamaEmbeddings
 with SuppressStdout():
     vectorstore = Chroma.from_documents(
         documents=all_splits,
